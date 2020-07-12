@@ -35,3 +35,8 @@ body {
     border-color: #000;
     background-color: #000;
 }
+.todo-wraper {
+    width: 400px;
+    height: 400px;
+    background-color: #ff4141;
+}
