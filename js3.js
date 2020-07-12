@@ -1,5 +1,5 @@
 function randomNumber() {
-    return Math.round(Math.random() * 255);
+    return Math.floor(Math.random() * 255.9999999999999);
 }
 
 function changeColor() {
@@ -13,9 +13,9 @@ todoWraper.addEventListener('click', changeColor);
 //---------------------------------------------
 function previousSlide() {
     debugger
-    let arrOfClass = this.nextElementSibling.children[0].classList;
-    arrOfClass.forEach(y)
-    console.log(arrOfClass);
+    let arrOfSlide = document.querySelectorAll('.slide');
+    // arrOfSlide.forEach(x => checkSlide(x));
+    console.log(arrOfSlide);
 }
 
 let arrowLeft = document.querySelector('.left');
