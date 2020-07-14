@@ -55,14 +55,14 @@ function moveSlide() {
     for (let i=0; i<arrOfSlide.length; i++) {
         if (arrOfSlide[i].classList.contains('active')) {
             arrOfSlide[i].classList.remove('active');
-            if (this.classList.contains('left')) {
-                if (i - 1 == -1) {
+            if (this.classList.contains('left')) { //проверка на какую стрелку нажали влево или вправо
+                if (i - 1 == -1) { //Проверка на крайний слайд
                     i = arrOfSlide.length - 1;
                 } else {
                     i--;
                 }                
             } else {
-                if (i + 1 == arrOfSlide.length) {
+                if (i + 1 == arrOfSlide.length) {//Проверка на крайний слайд
                     i = 0;
                 } else {
                     i++;
