@@ -47,14 +47,17 @@ todoWraper.addEventListener('click', changeColor);
 // let arrowRight = document.querySelector('.right');
 // arrowRight.addEventListener('click', nextSlide);
 
-//сделана первая версия слайдера
+//сделана первая версия слайдера с двумя функциями
 //----------------------------------------
-
+function delClasses(i) {
+    arrOfSlide[i].classList.remove('active');
+    arrOfSlide[i].classList.remove('right-position');
+}
 function moveSlide() {
-    let arrOfSlide = document.querySelectorAll('.slide');
     for (let i=0; i<arrOfSlide.length; i++) {
         if (arrOfSlide[i].classList.contains('active')) {
-            arrOfSlide[i].classList.remove('active');
+            arrOfSlide[i].classList.add('right-position');
+            setTimeout(delClasses, 2000, i);            
             if (this.classList.contains('left')) { //проверка на какую стрелку нажали влево или вправо
                 if (i - 1 == -1) { //Проверка на крайний слайд
                     i = arrOfSlide.length - 1;
@@ -73,14 +76,14 @@ function moveSlide() {
         }
     }
 }
-
+const arrOfSlide = document.querySelectorAll('.slide');
 let arrowBtns = document.querySelectorAll('.arrow');
 for (let i = 0; i < arrowBtns.length; i++) {
     const el = arrowBtns[i];
     el.addEventListener('click', moveSlide);
 }
 
-//Сделать слайдер с плавной анимацией!!!!!!!!!!!!!!!!!!!!!!!!!!
+//Сделать слайдер с одной функцией для двух кнопок и плавной анимацией!!!!!!!!!!!!!!!!!!!!!!!!!!
 //---------------------------------------------
 
 

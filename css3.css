@@ -57,13 +57,17 @@ body {
     height: 30px;
     background-color: orange;
 }
-.slide {
-    display: none;
+.box-of-slide {
     width: 200px;
     height: 200px;
+    overflow: hidden;
+    display: -webkit-box;
 }
-.active {
-    display: block;
+.slide {    
+    width: 200px;
+    height: 200px;
+    display: none;
+    transition: transform 2s;
 }
 .one {    
     background-color: red;
@@ -74,3 +78,10 @@ body {
 .three {    
     background-color: blue;
 }
+.active {
+    display: block;
+}
+.right-position {
+    transform: translate(200px, 0);
+}
+
