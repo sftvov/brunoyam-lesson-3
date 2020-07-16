@@ -70,15 +70,19 @@ body {
 }
 .active {
     display: block;
+    z-index: 1;
 }
 .smooth {
-    transition: transform  10s;
+    transition: transform  1s;
 }
 .right-position {
     transform: translate(200px, 0);
+    z-index: 0;
+    
 }
 .left-position {
     transform: translate(-200px, 0);
+    z-index: 0;
 }
 .center-position {
     transform: translate(0, 0);

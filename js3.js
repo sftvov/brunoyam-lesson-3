@@ -83,30 +83,47 @@ todoWraper.addEventListener('click', changeColor);
 //---------------------------------------------
 function moveSlide() {
     for (let i=0; i<arrOfSlide.length; i++) {
+        arrOfSlide[i].classList.remove('smooth');
+        if (arrOfSlide[i].classList.contains('right-position')) {
+            arrOfSlide[i].classList.remove('active');
+            arrOfSlide[i].classList.remove('right-position');            
+        }
+        if (arrOfSlide[i].classList.contains('left-position')) {
+            arrOfSlide[i].classList.remove('active');
+            arrOfSlide[i].classList.remove('left-position');            
+        }
+    }
+    for (let i=0; i<arrOfSlide.length; i++) {        
         if (arrOfSlide[i].classList.contains('active')) {
             arrOfSlide[i].classList.add('smooth');
             if (this.classList.contains('left')) { //проверка на какую стрелку нажали влево или вправо
-                debugger
                 arrOfSlide[i].classList.add('right-position');
                 if (i - 1 == -1) { //Проверка на крайний слайд
                     newActiveSlide = arrOfSlide.length - 1;
                 } else {
                     newActiveSlide--;
                 }
-                arrOfSlide[newActiveSlide].classList.add('active');
                 arrOfSlide[newActiveSlide].classList.add('left-position');
+                arrOfSlide[newActiveSlide].classList.add('active');
                 arrOfSlide[newActiveSlide].classList.add('smooth');
                 setTimeout(() => {
                     arrOfSlide[newActiveSlide].classList.remove('left-position');
                 }, 0);     
             } else {
+                arrOfSlide[i].classList.add('left-position');
                 if (i + 1 == arrOfSlide.length) {//Проверка на крайний слайд
                     newActiveSlide = 0;
                 } else {
                     newActiveSlide++;
                 }
+                arrOfSlide[newActiveSlide].classList.add('right-position');
+                arrOfSlide[newActiveSlide].classList.add('active');
+                arrOfSlide[newActiveSlide].classList.add('smooth');
+                setTimeout(() => {
+                    arrOfSlide[newActiveSlide].classList.remove('right-position');
+                }, 0);  
             }
-                        break;
+            break;
         }
     }
 }
