@@ -71,8 +71,6 @@ body {
 .active {
     display: block;
     z-index: 1;
-}
-.smooth {
     transition: transform  1s;
 }
 .right-position {
@@ -95,4 +93,7 @@ body {
 }
 .three {    
     background-color: blue;
+}
+.four {
+    background-color: purple;
 }
