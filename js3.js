@@ -50,7 +50,7 @@ todoWraper.addEventListener('click', changeColor);
 //сделана первая версия слайдера с двумя функциями
 //----------------------------------------
 
-// function moveSlide() {
+// function pressArrowBtn() {
 //     for (let i=0; i<arrOfSlide.length; i++) {
 //         if (arrOfSlide[i].classList.contains('active')) {
 //             arrOfSlide[i].classList.remove('active');                      
@@ -76,21 +76,19 @@ todoWraper.addEventListener('click', changeColor);
 // let arrowBtns = document.querySelectorAll('.arrow');
 // for (let i = 0; i < arrowBtns.length; i++) {
 //     const el = arrowBtns[i];
-//     el.addEventListener('click', moveSlide);
+//     el.addEventListener('click', pressArrowBtn);
 // }
 
 //Сделал слайдер с одной функцией для двух кнопок
 //---------------------------------------------
-function moveSlide() {
+function pressArrowBtn() {
     for (let i=0; i<arrOfSlide.length; i++) {
         arrOfSlide[i].classList.remove('smooth');
-        if (arrOfSlide[i].classList.contains('right-position')) {
-            arrOfSlide[i].classList.remove('active');
-            arrOfSlide[i].classList.remove('right-position');            
-        }
-        if (arrOfSlide[i].classList.contains('left-position')) {
-            arrOfSlide[i].classList.remove('active');
-            arrOfSlide[i].classList.remove('left-position');            
+        for (let j = 0; j < classes.length; j++) {
+            const class = classes[j];
+            if (arrOfSlide[i].classList.contains(class)) {
+                arrOfSlide[i].classList.remove('active', class);   
+            }            
         }
     }
     for (let i=0; i<arrOfSlide.length; i++) {        
@@ -103,9 +101,7 @@ function moveSlide() {
                 } else {
                     newActiveSlide--;
                 }
-                arrOfSlide[newActiveSlide].classList.add('left-position');
-                arrOfSlide[newActiveSlide].classList.add('active');
-                arrOfSlide[newActiveSlide].classList.add('smooth');
+                arrOfSlide[newActiveSlide].classList.add('left-position', 'active', 'smooth');
                 setTimeout(() => {
                     arrOfSlide[newActiveSlide].classList.remove('left-position');
                 }, 0);     
@@ -116,9 +112,7 @@ function moveSlide() {
                 } else {
                     newActiveSlide++;
                 }
-                arrOfSlide[newActiveSlide].classList.add('right-position');
-                arrOfSlide[newActiveSlide].classList.add('active');
-                arrOfSlide[newActiveSlide].classList.add('smooth');
+                arrOfSlide[newActiveSlide].classList.add('right-position', 'active', 'smooth');
                 setTimeout(() => {
                     arrOfSlide[newActiveSlide].classList.remove('right-position');
                 }, 0);  
@@ -127,12 +121,13 @@ function moveSlide() {
         }
     }
 }
+const classes = ['left-position', 'right-position'];
 const arrOfSlide = document.querySelectorAll('.slide');
 let newActiveSlide = 0;
 const arrowBtns = document.querySelectorAll('.arrow');
 for (let i = 0; i < arrowBtns.length; i++) {
     const el = arrowBtns[i];
-    el.addEventListener('click', moveSlide);
+    el.addEventListener('click', pressArrowBtn);
 }
 
 //Сделать слайдер с плавной прокруткой
